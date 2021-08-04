@@ -19,7 +19,7 @@ public class ShoppingCartApplication {
     }
 
 
-   /* @Bean
+   @Bean
     public Docket swaggerConfiguration(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -27,5 +27,5 @@ public class ShoppingCartApplication {
                 .apis(RequestHandlerSelectors.basePackage("com.sca.webapp.controller"))
                 .build();
     }
-  */
+
 }
