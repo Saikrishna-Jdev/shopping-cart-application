@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.sca.webapp.repository.ShoppingCartRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.091 s <<< FAILURE! - in com.sca.webapp.repository.ShoppingCartRepositoryTest
+testCartItemsByUser  Time elapsed: 0.438 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <4> but was: <5>
+	at com.sca.webapp.repository.ShoppingCartRepositoryTest.testCartItemsByUser(ShoppingCartRepositoryTest.java:46)
+
