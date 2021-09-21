@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -38,4 +39,17 @@ public class Book extends Product implements Serializable {
     @Convert(converter = ProductCategoryConverter.class)
     private ProductCategory productCategory;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Book book = (Book) o;
+        return productId == book.productId && Float.compare(book.price, price) == 0 && Objects.equals(productName, book.productName) && Objects.equals(genere, book.genere) && Objects.equals(author, book.author) && Objects.equals(publications, book.publications) && productCategory == book.productCategory;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), productId, productName, price, genere, author, publications, productCategory);
+    }
 }

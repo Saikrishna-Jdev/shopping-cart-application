@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Data
 @Entity(name="products")
@@ -25,5 +26,16 @@ public class Product implements Serializable
     @Convert(converter = ProductCategoryConverter.class)
     protected ProductCategory productCategory;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return productId == product.productId && Float.compare(product.price, price) == 0 && Objects.equals(productName, product.productName) && productCategory == product.productCategory;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId, productName, price, productCategory);
+    }
 }
