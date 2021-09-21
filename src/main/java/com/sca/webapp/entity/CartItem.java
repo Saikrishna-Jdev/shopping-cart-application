@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Data
@@ -12,7 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table
-public class CartItem {
+public class CartItem implements Serializable,Comparable<CartItem> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +41,10 @@ public class CartItem {
     @Override
     public int hashCode() {
         return Objects.hash(id, user, product, quantity);
+    }
+
+    @Override
+    public int compareTo(CartItem o) {
+        return 0;
     }
 }

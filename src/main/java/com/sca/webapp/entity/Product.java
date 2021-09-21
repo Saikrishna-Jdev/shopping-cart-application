@@ -14,7 +14,7 @@ import java.util.Objects;
 @DiscriminatorColumn(name = "product_type",discriminatorType = DiscriminatorType.STRING)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 
-public class Product implements Serializable
+public class Product implements Serializable,Comparable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,5 +37,10 @@ public class Product implements Serializable
     @Override
     public int hashCode() {
         return Objects.hash(productId, productName, price, productCategory);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

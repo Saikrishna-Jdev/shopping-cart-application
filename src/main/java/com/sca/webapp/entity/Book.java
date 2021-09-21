@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonFormat
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @DiscriminatorValue("1")
-public class Book extends Product implements Serializable {
+public class Book extends Product implements Serializable ,Comparable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,5 +51,10 @@ public class Book extends Product implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), productId, productName, price, genere, author, publications, productCategory);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

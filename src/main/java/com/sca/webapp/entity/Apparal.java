@@ -55,4 +55,6 @@ public class Apparal extends Product implements Serializable {
     public int hashCode() {
         return Objects.hash(super.hashCode(), productId, productName, price, type, brand, design, productCategory);
     }
+
+
 }

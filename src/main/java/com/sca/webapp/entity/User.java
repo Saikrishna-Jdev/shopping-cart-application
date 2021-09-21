@@ -3,6 +3,7 @@ package com.sca.webapp.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 
@@ -11,7 +12,8 @@ import java.util.Objects;
 @Data
 @Entity
 @Table
-public class User {
+
+public class User implements Serializable,Comparable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
@@ -37,5 +39,10 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(userId, name, email, password);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
