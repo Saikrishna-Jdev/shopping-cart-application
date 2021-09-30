@@ -1,6 +1,7 @@
 package com.sca.webapp.service;
 
 import com.sca.webapp.entity.Product;
+import com.sca.webapp.exception.ProductNotFoundException;
 import com.sca.webapp.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Product getProductById(int productId){
-        return productRepository.getById(productId);
+        Product product= productRepository.getById(productId);
+        if(product==null){
+            throw new ProductNotFoundException("Sorry The Product you are looking is not available");
+        }
+        else{
+            return product;
+        }
     }
 
     @Override

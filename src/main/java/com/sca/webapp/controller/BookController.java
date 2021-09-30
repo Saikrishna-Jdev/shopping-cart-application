@@ -3,6 +3,7 @@ package com.sca.webapp.controller;
 import com.sca.webapp.entity.Book;
 import com.sca.webapp.entity.Product;
 import com.sca.webapp.entity.ProductCategory;
+import com.sca.webapp.exception.BookNotFoundException;
 import com.sca.webapp.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,11 @@ public class BookController {
     public Book getBookById(@PathVariable("id") int id){
 
         return bookService.getBookbyId(id);
+
     }
 
     @PostMapping("/save")
+
     public Book saveBook(@RequestBody Book book){
         System.out.println(book.getAuthor());
 

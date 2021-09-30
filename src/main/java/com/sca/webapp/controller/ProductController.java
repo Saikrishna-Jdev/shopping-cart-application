@@ -2,6 +2,7 @@ package com.sca.webapp.controller;
 
 import com.sca.webapp.entity.Product;
 import com.sca.webapp.entity.ProductCategory;
+import com.sca.webapp.exception.ProductNotFoundException;
 import com.sca.webapp.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class ProductController {
 
     @GetMapping("/getProductById/{productId}")
     public Product getProductById(@PathVariable("productId") int productId){
+
         return service.getProductById(productId);
     }
 
