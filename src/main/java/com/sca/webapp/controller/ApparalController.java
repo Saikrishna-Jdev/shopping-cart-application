@@ -2,6 +2,7 @@ package com.sca.webapp.controller;
 
 import com.sca.webapp.entity.Apparal;
 import com.sca.webapp.service.ApparalService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/apparal")
+@Slf4j
 public class ApparalController {
 
     @Autowired
@@ -16,13 +18,14 @@ public class ApparalController {
 
     @PostMapping("/saveApparal")
     public Apparal saveApparal(@RequestBody Apparal apparal){
-        System.out.println(apparal.getBrand());
+        log.debug("Saving Apparal into database ",apparal.getBrand());
         return apparalService.saveApparal(apparal);
 
     }
 
     @GetMapping("/all")
     public List<Apparal> getAll(){
+        log.info("getting the all Apparals from Database");
 
         return apparalService.getApparals();
     }

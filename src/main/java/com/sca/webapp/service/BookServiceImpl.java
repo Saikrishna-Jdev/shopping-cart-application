@@ -4,12 +4,14 @@ import com.sca.webapp.entity.Book;
 import com.sca.webapp.entity.Product;
 import com.sca.webapp.entity.ProductCategory;
 import com.sca.webapp.repository.BookRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class BookServiceImpl  implements BookService{
 
     @Autowired
@@ -22,6 +24,7 @@ public class BookServiceImpl  implements BookService{
 
     @Override
     public Book getBookbyId(int id) {
+        log.debug("Request for Getting the Book with an ID: ",id);
         return repository.getById(id);
     }
 

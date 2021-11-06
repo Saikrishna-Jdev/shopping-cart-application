@@ -4,6 +4,7 @@ import com.sca.webapp.entity.CartItem;
 import com.sca.webapp.entity.User;
 import com.sca.webapp.service.shoppingcart.ShoppingCartService;
 import com.sca.webapp.service.user.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
+@Slf4j
 public class ShoppingCartController {
 
     @Autowired
@@ -24,7 +26,7 @@ public class ShoppingCartController {
     public List<CartItem> displayCartItems(@PathVariable("userId") int userId){
         System.out.println("User Id is : "+userId);
         User user= service.getUserById(userId);
-//        System.out.println(user.getName()+" with Id"+user.getUserId());
+        log.debug("User with an ID : %2d is Requesting For Displaying the cart Items",user.getUserId());
         return  shoppingCartService.cartItemList(user);
     }
 
@@ -43,7 +45,7 @@ public class ShoppingCartController {
     @PostMapping("/update")
     public String updateQuantity(@RequestParam("productId") int productId, @RequestParam("quantity") int quantity,
                                  @RequestParam("userId") int userId) {
-        System.out.println("ADD Products To the Cart");
+        log.info("ADD Products To the Cart");
         System.out.println("Product with Id  " + productId + " is added with " + quantity + " to shopping cart");
 
         User user = service.getUserById(userId);
@@ -64,7 +66,7 @@ public class ShoppingCartController {
 
 
         User user = service.getUserById(userId);
-
+        log.debug("Trying to fetch ",user);
         shoppingCartService.removeProduct(productId,userId);
         return "The Product With Id : "+productId+" is Removed From your Cart";
 

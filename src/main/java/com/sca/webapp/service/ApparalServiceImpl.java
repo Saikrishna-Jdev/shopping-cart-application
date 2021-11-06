@@ -2,12 +2,14 @@ package com.sca.webapp.service;
 
 import com.sca.webapp.entity.Apparal;
 import com.sca.webapp.repository.ApparalRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class ApparalServiceImpl implements ApparalService{
 
     @Autowired
@@ -16,6 +18,7 @@ public class ApparalServiceImpl implements ApparalService{
 
     @Override
     public Apparal saveApparal(Apparal apparal) {
+        log.info("Inside the saveApparal() in Service");
         return repository.save(apparal);
     }
 
