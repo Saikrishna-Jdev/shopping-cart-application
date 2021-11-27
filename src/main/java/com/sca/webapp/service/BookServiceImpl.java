@@ -33,6 +33,7 @@ public class BookServiceImpl  implements BookService{
     public Book getBookbyId(int id) {
         log.debug("Request for Getting the Book with an ID: {} ",id);
         book=repository.getById(id);
+        log.info("The Book id fetched Successfully. {} ",book);
         if(book !=null)
             return book;
         else
