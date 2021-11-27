@@ -8,5 +8,6 @@ public interface ApparalService {
 
     Apparal saveApparal(Apparal apparal);
     List<Apparal> getApparals();
+    Apparal getApparalById(int apparalId);
 
 }

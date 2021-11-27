@@ -42,10 +42,11 @@ public class BookServiceImpl  implements BookService{
 
     @Override
     public Book saveBook(Book book) {
-        log.info("The Book is saved : {}",book);
+
         if(book.getAuthor().isEmpty()||book.getGenere().isEmpty())
             throw new EmptyInputFieldException("Mandatory Fields are Empty.");
         Book savedBook= repository.save(book);
+        log.info("The Book is saved : {}",book);
         return savedBook;
     }
 

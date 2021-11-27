@@ -29,4 +29,8 @@ public class ApparalController {
 
         return apparalService.getApparals();
     }
+    public Apparal getApparalById(@PathVariable("id") int id){
+        log.info("Trying to Fetch Apparal By Id : {}",id);
+        return apparalService.getApparalById(id);
+    }
 }
