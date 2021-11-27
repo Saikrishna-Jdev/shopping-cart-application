@@ -27,6 +27,7 @@ public class ProductController {
     @GetMapping("/getProductById/{productId}")
     public Product getProductById(@PathVariable("productId") int productId){
         log.debug("Request for Product with an ID: ",productId);
+        log.error("Product is not found with an ID: %2d",productId);
         return service.getProductById(productId);
     }
 

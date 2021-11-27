@@ -13,12 +13,12 @@ import java.util.NoSuchElementException;
 public class ShoppingCartControllerAdvice {
 
     @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<String> noSuchElementNotFoundException(NoSuchElementException elementException){
+    public ResponseEntity<Object> noSuchElementNotFoundException(NoSuchElementException elementException){
         return new ResponseEntity<>("Sorry The Product is not available.", HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = {ProductNotFoundException.class, EntityNotFoundException.class})
+    @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<String> productNotFoundException(ProductNotFoundException productNotFoundException){
-        return new ResponseEntity<>(productNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<String>("Sorry! The Product which you are looking is Not Available",HttpStatus.NOT_FOUND);
     }
 }
