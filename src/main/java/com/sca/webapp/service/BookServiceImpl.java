@@ -3,6 +3,8 @@ package com.sca.webapp.service;
 import com.sca.webapp.entity.Book;
 import com.sca.webapp.entity.Product;
 import com.sca.webapp.entity.ProductCategory;
+import com.sca.webapp.exception.BookNotFoundException;
+import com.sca.webapp.exception.EmptyInputFieldException;
 import com.sca.webapp.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import java.util.List;
 @Transactional
 public class BookServiceImpl  implements BookService{
 
+    Book book;
+
     @Autowired
     private BookRepository repository;
 
@@ -28,13 +32,20 @@ public class BookServiceImpl  implements BookService{
     @Override
     public Book getBookbyId(int id) {
         log.debug("Request for Getting the Book with an ID: {} ",id);
-        return repository.getById(id);
+        book=repository.getById(id);
+        if(book !=null)
+            return book;
+        else
+            throw new BookNotFoundException("Sorry The Book which you are looking is not Available.");
     }
 
     @Override
     public Book saveBook(Book book) {
         log.info("The Book is saved : {}",book);
-        return repository.save(book);
+        if(book.getAuthor().isEmpty()||book.getGenere().isEmpty())
+            throw new EmptyInputFieldException("Mandatory Fields are Empty.");
+        Book savedBook= repository.save(book);
+        return savedBook;
     }
 
    /* @Override

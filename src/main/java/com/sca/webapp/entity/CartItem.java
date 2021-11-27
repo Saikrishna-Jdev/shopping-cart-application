@@ -19,7 +19,7 @@ public class CartItem implements Serializable,Comparable<CartItem> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -40,6 +40,7 @@ public class CartItem implements Serializable,Comparable<CartItem> {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id, user, product, quantity);
     }
 

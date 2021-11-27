@@ -17,6 +17,7 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl service;
 
+
     @GetMapping("/")
     public List<Product> getAllProducts(){
         log.info("Printing All The Products {}",service.getAll());
@@ -28,7 +29,7 @@ public class ProductController {
     public Product getProductById(@PathVariable("productId") int productId){
         log.debug("Request for Product with an ID: {} ",+productId);
         //log.error("Product is not found with an ID: {}",+productId);
-        return service.getProductById(productId);
+         return service.getProductById(productId);
     }
 
     @GetMapping("/getProductByName/{productName}")
