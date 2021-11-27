@@ -19,28 +19,28 @@ public class ProductController {
 
     @GetMapping("/")
     public List<Product> getAllProducts(){
-        log.info("Printing All The Products");
+        log.info("Printing All The Products {}",service.getAll());
         return service.getAll();
 
     }
 
     @GetMapping("/getProductById/{productId}")
     public Product getProductById(@PathVariable("productId") int productId){
-        log.debug("Request for Product with an ID: ",productId);
-        log.error("Product is not found with an ID: %2d",productId);
+        log.debug("Request for Product with an ID: {} ",+productId);
+        //log.error("Product is not found with an ID: {}",+productId);
         return service.getProductById(productId);
     }
 
     @GetMapping("/getProductByName/{productName}")
     public Product getProductByName(@PathVariable("productName") String productName){
-        log.debug("Getting the Product By Name : ",productName);
+        log.debug("Getting the Product By Name : {}",productName);
         return service.getProductByName(productName);
 
     }
 
     @GetMapping("/getProductByCategory/{productCategory}")
     public Product getProductByCategory(@PathVariable("category") String productCategory){
-        log.debug("productCategory is : ",productCategory);
+        log.debug("productCategory is : {} ",productCategory);
         return service.getProductByCategory(productCategory);
     }
 

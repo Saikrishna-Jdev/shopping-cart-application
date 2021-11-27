@@ -19,17 +19,19 @@ public class BookServiceImpl  implements BookService{
 
     @Override
     public List<Book> getAllBooks() {
+        log.info("List Of AllBooks : {} ",repository.findAll());
         return repository.findAll();
     }
 
     @Override
     public Book getBookbyId(int id) {
-        log.debug("Request for Getting the Book with an ID: ",id);
+        log.debug("Request for Getting the Book with an ID: {} ",id);
         return repository.getById(id);
     }
 
     @Override
     public Book saveBook(Book book) {
+        log.info("The Book is saved : {}",book);
         return repository.save(book);
     }
 

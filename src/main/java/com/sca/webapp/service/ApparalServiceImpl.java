@@ -19,11 +19,13 @@ public class ApparalServiceImpl implements ApparalService{
     @Override
     public Apparal saveApparal(Apparal apparal) {
         log.info("Inside the saveApparal() in Service");
+        log.info("Apparal Saved {} ",apparal);
         return repository.save(apparal);
     }
 
     @Override
     public List<Apparal> getApparals() {
+        log.info("Getting All Apparals :  {}",repository.findAll());
         return repository.findAll();
     }
 }

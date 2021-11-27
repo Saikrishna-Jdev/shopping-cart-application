@@ -16,6 +16,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     public List<Product> getAll(){
+        log.info("Getting All the Products : ");
         return productRepository.findAll();
     }
 
@@ -32,11 +33,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductByName(String productName) {
         log.debug("Inside the getProductByName() in ProductServiceImpl");
+        log.info("Getting the Product by productName: {}",productName);
         return productRepository.getProductByProductName(productName);
     }
 
     @Override
     public Product getProductByCategory(String productCategory) {
+        log.info("Getting all products by Category : {}",productCategory);
         return productRepository.getProductByProductCategory(productCategory);
     }
 }

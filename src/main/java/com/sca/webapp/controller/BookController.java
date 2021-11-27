@@ -21,14 +21,14 @@ public class BookController {
 
     @GetMapping("/all")
     public List<Book> getAllBooks(){
-        log.info("Getting the List of Books ");
+        log.info("Getting the List of Books {} "+bookService.getAllBooks());
         return bookService.getAllBooks();
 
     }
 
     @GetMapping("/get/{id}")
     public Book getBookById(@PathVariable("id") int id){
-        log.debug("Request for th eBook with an Id: ",id);
+        log.debug("Request for th eBook with an Id: {} ",id);
         return bookService.getBookbyId(id);
 
     }
@@ -36,7 +36,7 @@ public class BookController {
     @PostMapping("/save")
 
     public Book saveBook(@RequestBody Book book){
-        log.debug(" Saving The Book ",book.getAuthor());
+        log.debug(" Saving The Book Written By : {} ",book.getAuthor());
 
         return bookService.saveBook(book);
     }

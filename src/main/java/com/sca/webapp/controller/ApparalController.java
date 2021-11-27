@@ -18,14 +18,14 @@ public class ApparalController {
 
     @PostMapping("/saveApparal")
     public Apparal saveApparal(@RequestBody Apparal apparal){
-        log.debug("Saving Apparal into database ",apparal.getBrand());
+        log.debug("Saving Apparal  {}  into database ",apparal.getBrand());
         return apparalService.saveApparal(apparal);
 
     }
 
     @GetMapping("/all")
     public List<Apparal> getAll(){
-        log.info("getting the all Apparals from Database");
+        log.info("getting the all Apparals from Database : {}",apparalService.getApparals());
 
         return apparalService.getApparals();
     }
